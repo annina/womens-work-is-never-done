@@ -1,13 +1,19 @@
 # Mother's Work is Never Done
 
-_Mother's Work is Never Done_ is an electronic object consisting of a standard Medela breastpump that can be used to pump breastmilk but also to make music using the rhythm that the breastpump generates while pumping. This sound is passed through different filters.
+_Mother's Work is Never Done_ is an electronic object consisting of a standard Medela breastpump that can be used to pump breastmilk but also to make music using the rhythm that the breastpump generates while pumping. This sound is passed through sets of filters. 
 
-### Hardware Documentation
+## Hardware Documentation
 
 
-### Software Documentation
+## Software Documentation
 
-Installing the project requires that you install [sonic-pi-cli](https://github.com/Widdershin/sonic-pi-cli) 
+The project consists of a ruby script that runs in Sonic Pi, a Live Coding Synth. The second main component is a  startup script that starts JACK, the audio routing toolkit as well as Sonic Pi. Installing the project requires that you have [sonic-pi-cli](https://github.com/Widdershin/sonic-pi-cli) installed on your Raspberry Pi. Sonic Pi, Audio Jack, and QJackCtl should already be installed. 
+
+### The Startup Script
+
+
+
+
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
