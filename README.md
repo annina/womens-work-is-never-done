@@ -17,7 +17,8 @@ sudo nano .config/lxsession/LXDE-pi/autostart
 ```
 Add the following line:
 ```markdown
-@Desktop/startup_script.sh```
+@Desktop/startup_script.sh
+```
 
 
 
