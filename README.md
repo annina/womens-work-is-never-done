@@ -7,7 +7,7 @@ _Mother's Work is Never Done_ is an electronic object consisting of a standard M
 
 ### Software Documentation
 
-The project consist of a folder with a Ruby script to 
+Installing the project requires installing [Link] (https://github.com/Widdershin/sonic-pi-cli) sonic-pi-cli 
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
