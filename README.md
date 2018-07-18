@@ -1,10 +1,13 @@
-## Welcome to GitHub Pages
+#Mother's Work is Never Done
 
-You can use the [editor on GitHub](https://github.com/annina/mothers-work-is-never-done/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+_Mother's Work is Never Done_ is an electronic object consisting of a standard Medela breastpump that can be used to pump breastmilk but also to make music using the rhythm that the breastpump generates while pumping. This sound is passed through different filters.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Hardware Documentation
 
-### Markdown
+
+### Software Documentation
+
+The project consist of a folder with a Ruby script to 
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
