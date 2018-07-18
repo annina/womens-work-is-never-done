@@ -19,7 +19,7 @@ Add the following line (if your startup_script.sh is located on the Desktop - el
 ```markdown
 @Desktop/startup_script.sh
 ```
-
+Upon reboot, the script should run after the LX session starts.
 
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
