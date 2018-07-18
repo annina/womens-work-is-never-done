@@ -15,7 +15,7 @@ The startup script is a shell script that runs on startup. To run a script on st
 ```markdown
 sudo nano .config/lxsession/LXDE-pi/autostart
 ```
-Add the following line:
+Add the following line (if your startup_script.sh is located on the Desktop - else modify to reflect its location):
 ```markdown
 @Desktop/startup_script.sh
 ```
