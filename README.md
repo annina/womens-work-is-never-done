@@ -10,8 +10,11 @@ _Mother's Work is Never Done_ is an electronic object consisting of a standard M
 The project consists of a ruby script that runs in Sonic Pi, a Live Coding Synth. The second main component is a  startup script that starts JACK, the audio routing toolkit as well as Sonic Pi. Installing the project requires that you have [sonic-pi-cli](https://github.com/Widdershin/sonic-pi-cli) installed on your Raspberry Pi. Sonic Pi, Audio Jack, and QJackCtl should already be installed. 
 
 ### The Startup Script
+The startup script is a shell script that runs on startup. To run a script on startup on stretch you need to modify the following document like this:
 
-
+```markdown
+sudo nano .config/lxsession/LXDE-pi/autostart
+```
 
 
 
