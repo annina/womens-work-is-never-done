@@ -1,0 +1,426 @@
+
+live_loop :pbend do
+  use_real_time
+  w = sync "/midi/mpkmini2_midi_1/1/1pitch_bend"
+  
+  with_fx :whammy, transpose: w[0]/100  do
+    live_audio :aoo
+  end
+  sleep 0.25
+end
+
+live_loop :one do
+  use_real_time
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+  puts x,z
+
+  if x == 1 then
+    if z > 10 then
+      b = z+1.0/127
+      if z < 70 then
+        with_fx :echo, pre_mix: b, phase: b, decay: b do
+          live_audio :aoo
+        end
+
+
+      else if z > 70 and z < 110 then
+
+        with_fx :echo, pre_mix: b do
+          live_audio :aoo
+        end
+
+      else if z > 110 then
+
+        with_fx :echo, pre_mix: b, amp: 0.9 do
+          live_audio :aoo
+        end
+      end
+    end
+
+  end
+
+end
+end
+sleep 0.25
+end
+
+
+live_loop :two do
+  use_real_time
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+
+  puts x,z
+
+  if x == 2 then
+    if z > 10 then
+
+      with_fx :bitcrusher, sample_rate: (z+1.0/10)*90, bits: (z+1/8) do
+        live_audio :aoo
+      end
+    else
+      live_audio :aoo
+    end
+  end
+  sleep 1
+end
+
+live_loop :three do
+  use_real_time
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+  puts x,z
+  if x == 3 then
+    if z > 10 then
+      if z < 97 then
+        z = z-72
+      else
+        z = 24
+      end
+
+      puts z
+      with_fx :pitch_shift, pitch: (z/8) do
+        live_audio :aoo
+      end
+    else
+      live_audio:aoo
+    end
+  end
+  sleep 1
+end
+
+live_loop :four do
+  use_real_time
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+  puts x,z
+  if x == 4 then
+    if z > 10 then
+      n = z/128
+      with_fx :gverb, amp: 0.5, pre_mix: z do
+        live_audio :aoo
+      end
+    else
+      live_audio :aoo
+    end
+  end
+  sleep 1
+end
+
+
+
+live_loop :five do
+  use_real_time
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+  puts x,z
+  if x == 5 then
+    if z > 10 then
+
+      w = (z+1.0)/128
+      with_fx :flanger, phase_offset: w do
+        live_audio :aoo
+      end
+      else
+
+      live_audio :aoo
+    end
+  end
+sleep 1
+end
+
+
+
+
+live_loop :six do
+  use_real_time
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+  puts x,z
+  if x == 6 then
+
+   if z < 40 then
+sample "~/Desktop/RaspberryPiVersion/samples/Itakecareofwomen.aiff"
+
+
+     else if z > 40 and z < 70 then
+sample "~/Desktop/RaspberryPiVersion/samples/icherishwomen.wav"
+
+
+     else if z > 70 and z < 100 then
+
+sample "~/Desktop/RaspberryPiVersion/samples/nobodyisexcludedbasedupongender.aiff"
+     else if z > 100 and z < 127 then
+
+
+sample "~/Desktop/RaspberryPiVersion/samples/paul_ryan_family_time.aiff"
+
+
+  else
+
+    live_audio :aoo
+  end
+end
+end
+end
+end
+
+
+sleep 1
+end
+
+live_loop :seven do
+  use_real_time
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+  puts x,z
+  if x == 7 then
+    if z < 0 then
+      with_fx :vowel, voice: 4, vowel_sound: 2  do
+        live_audio :aoo
+      end
+
+    else if z > 0 and z < 30 then
+      with_fx :vowel, voice: 3, vowel_sound: 2  do
+        live_audio :aoo
+      end
+
+    else if z > 30 and z < 60 then
+      with_fx :vowel, voice: 2, vowel_sound: 2  do
+        live_audio :aoo
+      end
+
+    else if z > 60 and z < 90 then
+      with_fx :vowel, voice: 1, vowel_sound: 2  do
+        live_audio :aoo
+      end
+
+    else if z > 90 and z < 127 then
+      with_fx :vowel, voice: 0, vowel_sound: 2  do
+        live_audio :aoo
+      end
+
+
+
+    else
+
+
+
+      live_audio :aoo
+    end
+  end
+end
+end
+end
+end
+
+sleep 0.25
+end
+
+
+
+live_loop :eight do
+  use_real_time
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+  puts x,z
+  if x == 8 then
+    if z > 5 then
+
+      with_fx :whammy, transpose: z do
+        live_audio :aoo
+      end
+    else
+      live_audio :aoo
+    end
+  end
+  sleep 1
+end
+
+
+live_loop :piano do
+  use_real_time
+  note, velocity= sync "/midi/mpkmini2_midi_1/1/1/note_on"
+  note_off, velocity_off= sync "/midi/mpkmini2_midi_1/1/1/note_off"
+
+  #synth :piano, note: note, amp: velocity / 127.0
+
+
+  if note == 44 then
+
+  sample "~/Desktop/RaspberryPiVersion/samples/Itakecareofwomen.aiff"
+  end
+
+  if note == 45 then
+    sample "~/Desktop/RaspberryPiVersion/samples/paul_ryan_family_time.aiff"
+  end
+
+  if note == 46 then
+
+      sample "~/Desktop/RaspberryPiVersion/samples/icherishwomen.wav"
+
+
+  end
+
+  if note == 47 then
+      sample "~/Desktop/RaspberryPiVersion/samples/nobodyisexcludedbasedupongender.aiff"
+
+  end
+
+
+
+
+  if note == 54 then
+    with_fx :whammy, transpose: 120  do
+      live_audio :too
+    end
+  end
+
+  if note == 53 then
+    with_fx :whammy, transpose: 100  do
+      live_audio :too
+    end
+  end
+
+  if note == 52 then
+    with_fx :whammy, transpose: 80  do
+      live_audio :too
+    end
+  end
+
+  if note == 51 then
+    with_fx :whammy, transpose: 60  do
+      live_audio :too
+    end
+  end
+
+
+  if note == 50 then
+    with_fx :whammy, transpose: 40  do
+      live_audio :too
+    end
+  end
+
+  if note == 49 then
+    with_fx :whammy, transpose: 20  do
+      live_audio :too
+    end
+  end
+
+  if note == 48 then
+    with_fx :whammy, transpose: 5  do
+      live_audio :too
+    end
+  end
+
+
+  if note == 55 then
+    with_fx :pitch_shift, pitch: 8 do
+      live_audio :too
+    end
+  end
+
+  if note == 56 then
+    with_fx :pitch_shift, pitch: 12 do
+      live_audio :too
+    end
+  end
+
+  if note == 57 then
+    with_fx :pitch_shift, pitch: 24 do
+      live_audio :too
+    end
+  end
+
+  if note == 58 then
+    with_fx :pitch_shift, pitch: 12 do
+      live_audio :too
+    end
+  end
+
+  if note == 59 then
+    with_fx :ring_mod, freq: 96 do
+      live_audio :too
+    end
+  end
+
+  if note == 60 then
+    with_fx :ring_mod, freq: 74 do
+      live_audio :too
+    end
+  end
+
+  if note == 61 then
+    with_fx :ring_mod, freq: 63 do
+      live_audio :too
+    end
+  end
+
+  if note == 62 then
+    with_fx :vowel, voice: 1, vowel_sound: 5  do
+      live_audio :too
+    end
+  end
+
+  if note == 63 then
+    with_fx :vowel, voice: 1, vowel_sound: 4  do
+      live_audio :too
+    end
+  end
+
+  if note == 64 then
+    with_fx :vowel, voice: 1, vowel_sound: 3  do
+      live_audio :too
+    end
+  end
+
+  if note == 65 then
+    with_fx :vowel, voice: 1, vowel_sound: 2  do
+      live_audio :too
+    end
+  end
+
+  if note == 66 then
+    with_fx :vowel, voice: 1, vowel_sound: 1  do
+      live_audio :too
+    end
+  end
+
+  if note == 67 then
+    with_fx :vowel, voice: 0, vowel_sound: 3  do
+      live_audio :too
+    end
+  end
+
+  if note == 68 then
+    with_fx :vowel, voice: 4, vowel_sound: 1  do
+      live_audio :too
+    end
+  end
+
+  if note == 69 then
+    with_fx :vowel, voice: 3, vowel_sound: 1  do
+      live_audio :too
+    end
+  end
+
+  if note == 70 then
+    with_fx :vowel, voice: 2, vowel_sound: 1  do
+      live_audio :too
+    end
+  end
+
+  if note == 71 then
+    with_fx :vowel, voice: 1, vowel_sound: 1  do
+      live_audio :too
+    end
+  end
+
+  if note == 72 then
+    with_fx :vowel, voice: 0, vowel_sound: 1  do
+      live_audio :too
+    end
+  end
+
+
+
+
+
+
+  sleep 0.20
+end
+
+
