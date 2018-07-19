@@ -98,10 +98,9 @@ live_loop :eight do
   sleep 1                               #sleep is necessary (in more than one sense). Here, the amount depends on the effect you're using.
 end
 ```
+What I have learned about live_audio streams in the context of this project is that if you give every live_audio stream a unique name, they will all overlap and the result will not be interesting. Playing everything at once eradicates differences and interaction with the keyboard. So I have two live_audio streams that are connected to the keys and rotary controllers respectively. Keys cannot play together and sound controlled by rotary controllers cannot be layered on top of each other. But sound made by pressing keys can be layered on top of sound produced when rotary keys are turned.
 
-# Header 1
-## Header 2
-### Header 3
+
 
 - Bulleted
 - List
@@ -113,13 +112,4 @@ end
 
 [Link](url) and ![Image](src)
 ```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/annina/mothers-work-is-never-done/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+ or [contact support](https://github.com/contact) and we’ll help you sort it out.
