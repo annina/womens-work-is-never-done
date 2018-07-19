@@ -64,9 +64,20 @@ cat ~/Desktop/RaspberryPiVersion/midi_script.txt | sonic_pi
 ### The Ruby Script
 The Ruby script runs the effects that are applied to the live audio stream to create the sound. I am using an AKAI MPKmini midi controller. It comes with rotary controllers as well as piano keys and a red knob for pitch bending.
 
-The rotary controllers make numbers from 0-127. This can be accessed as follows. Variable x is the number of the controller and z is the position that it has been rotated to.  
+The rotary controllers make numbers from 0-127. This can be accessed as follows. Variable x is the number of the controller and z is the position that it has been rotated to.  If you are using a different midi controller with sonic pi,plug it in, turn a knob or hit a key, and you will see the path to it in the IO window of Sonic Pi.
+
+A rotary controller
 ```markdown
   x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+```
+A key press has both noteon and noteoff 
+```markdown
+  note, velocity= sync "/midi/mpkmini2_midi_1/1/1/note_on"  
+  note_off, velocity_off= sync "/midi/mpkmini2_midi_1/1/1/note_off"
+```
+Input from pitch bend looks like this: 
+```markdown
+ w = sync "/midi/mpkmini2_midi_1/1/1pitch_bend"
 ```
 # Header 1
 ## Header 2
