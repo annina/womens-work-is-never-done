@@ -79,7 +79,25 @@ Input from pitch bend looks like this:
 ```markdown
  w = sync "/midi/mpkmini2_midi_1/1/1pitch_bend"
 ```
+Every key, pad, and rotary controller has their own effect or set of effects. Below is an example of what this looks like. The process goes like this: First, look for control_change or note_on signal from midi controller. 
 
+```markdown
+live_loop :eight do
+  use_real_time #
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+  puts x,z                  # prints values to the Log window
+  if x == 8 then            # if it is the 8th rotary controller. 
+    if z > 5 then           # only apply the effect when z > 5.
+      with_fx :whammy, transpose: z do  # this is the section where the effect is applied. 
+        live_audio :aoo                 # the name of the live_audio stream.
+      end
+    else
+      live_audio :aoo                   #this will play the breastpump sound without effect.
+    end
+  end
+  sleep 1                               #sleep is necessary. How much depends on the intended effect. 
+end
+```
 
 
 # Header 1
