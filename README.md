@@ -36,14 +36,27 @@ this starts Sonic Pi (the graphical interface and everything). I never figured o
 ```markdown
 sonic-pi 1>/dev/null 2>/dev/null &
 ```
-The following line writes the connection between system_capture_1 and SuperCollider (the software that Sonic Pi runs on) into a variable. Raspberry Pi does not have a microphone on board, so the OS does not automatically route sound recorded by the microphone to Sonic Pi (as is the case on other OSs like Mac OS). 
-It takes a (long) while for Sonic Pi to start. So the script probes repeatedly whether SuperCollider has started and whether SuperCollider:in_1 is available. Else, no sound will reach Sonic Pi. 
+The following line writes the connection between system_capture_1 and SuperCollider (the software that Sonic Pi runs on) into a variable. Actually, it executes a jack_connect command and then routes the error message from stderr to stdout. This is necessary because stderr would not be captured in a variable. Why are we doing all of this? Raspberry Pi does not have a microphone on board, so the OS does not automatically route sound recorded by the microphone on the usb soundcard to Sonic Pi (as is the case on other OSs like Mac OS). 
+It takes a (looong) while for Sonic Pi to start. So the script probes repeatedly whether SuperCollider has started and whether SuperCollider:in_1 is available. Else, no sound will reach Sonic Pi. 
 
 ```markdown
 STR=$(jack_connect system:capture_1 SuperCollider:in_1 2>&1)
 ```
+Here is the loop that checks on the availability of SuperCollider:in_1. 
 
-
+```markdown
+STR=$(jack_connect system:capture_1 SuperCollider:in_1 2>&1)
+echo $STR
+sleep 1
+newstring=$(echo $STR | cut -c1-5)
+echo $newstring
+while [ "$newstring" = "Canno" ] || [ "$newstring" = "ERROR" ]; do
+sleep 2
+echo "another try"
+STR=$(jack_connect system:capture_1 SuperCollider:in_1 2>&1)
+newstring=$(echo $STR | cut -c1-5)
+done
+```
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
