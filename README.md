@@ -57,15 +57,17 @@ STR=$(jack_connect system:capture_1 SuperCollider:in_1 2>&1)
 newstring=$(echo $STR | cut -c1-5)
 done
 ```
-This is the last step where sonic-pi-cli loads the ruby script  midi_script.txt. Although Sonic-Pi can be controlled via Python (my preferred programming language), I did find any libraries that did what I wanted and it was simplest to write it directly in the language that Sonic Pi seems most comfortable with.
+This is the last step where sonic-pi-cli loads the ruby script contained in the text file midi_script.txt. Although Sonic-Pi can be controlled via Python (my preferred programming language), I did not find any libraries that do what I wanted. It therefore was simplest to write it directly in the language that Sonic Pi seems to be most comfortable with.
 ```markdown
 cat ~/Desktop/RaspberryPiVersion/midi_script.txt | sonic_pi
 ```
 ### The Ruby Script
+The Ruby script runs the effects that are applied to the live audio stream to create the sound. I am using an AKAI MPKmini midi controller. It comes with rotary controllers as well as piano keys and a red knob for pitch bending.
 
-
-
-
+The rotary controllers make numbers from 0-127. This can be accessed as follows. Variable x is the number of the controller and z is the position that it has been rotated to.  
+```markdown
+  x, z = sync "/midi/mpkmini2_midi_1/1/1/control_change"
+```
 # Header 1
 ## Header 2
 ### Header 3
