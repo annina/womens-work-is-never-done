@@ -79,7 +79,7 @@ Input from pitch bend looks like this:
 ```markdown
  w = sync "/midi/mpkmini2_midi_1/1/1pitch_bend"
 ```
-Every key, pad, and rotary controller has their own effect or set of effects. Below is an example of what this looks like. The process goes like this: First, look for control_change or note_on signal from midi controller. 
+Every key, pad, and rotary controller has their own effect or set of effects. Below is an example of what this looks like. The process goes like this: First, look for control_change or note_on signal from midi controller. Then apply the effect. Effects are documented under FX in the Sonic Pi help.
 
 ```markdown
 live_loop :eight do
@@ -95,10 +95,9 @@ live_loop :eight do
       live_audio :aoo                   #this will play the breastpump sound without effect.
     end
   end
-  sleep 1                               #sleep is necessary. How much depends on the intended effect. 
+  sleep 1                               #sleep is necessary. How much depends on the effect you're using.
 end
 ```
-
 
 # Header 1
 ## Header 2
