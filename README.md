@@ -95,7 +95,7 @@ live_loop :eight do
       live_audio :aoo                   #this will play the breastpump sound without effect.
     end
   end
-  sleep 1                               #sleep is necessary. How much depends on the effect you're using.
+  sleep 1                               #sleep is necessary (in more than one sense). Here, the amount depends on the effect you're using.
 end
 ```
 
