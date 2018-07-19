@@ -57,16 +57,15 @@ STR=$(jack_connect system:capture_1 SuperCollider:in_1 2>&1)
 newstring=$(echo $STR | cut -c1-5)
 done
 ```
-This is the last step where sonic-pi-cli loads  ruby script in midi_script.txt. Although Sonic-Pi can be controlled via Python (my preferred programming language), I did not find the libraries intuitive to use for my purposes, so I am using Ruby here. 
-
+This is the last step where sonic-pi-cli loads the ruby script  midi_script.txt. Although Sonic-Pi can be controlled via Python (my preferred programming language), I did find any libraries that did what I wanted and it was simplest to write it directly in the language that Sonic Pi seems most comfortable with.
 ```markdown
 cat ~/Desktop/RaspberryPiVersion/midi_script.txt | sonic_pi
 ```
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### The Ruby Script
 
-```markdown
-Syntax highlighted code block
-```
+
+
+
 # Header 1
 ## Header 2
 ### Header 3
