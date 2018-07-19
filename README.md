@@ -10,7 +10,7 @@ _Mother's Work is Never Done_ is an electronic object consisting of a standard M
 The project consists of a ruby script that runs in Sonic Pi, a Live Coding Synth. The second main component is a  startup script that starts JACK, the audio routing toolkit as well as Sonic Pi. Installing the project requires that you have [sonic-pi-cli](https://github.com/Widdershin/sonic-pi-cli) installed on your Raspberry Pi. Sonic Pi, Audio Jack, and QJackCtl should already be installed. 
 
 ### The Startup Script
-The startup script is a shell script that runs on startup. To run a script on startup on stretch you need to modify the following document like this:
+The startup script is a shell script that runs on startup. The script takes care of routing sound from the microphone to Sonic Pi and starts the project on Sonic Pi so it can be run without a monitor. Sound routing is necessary because Raspberry Pi does not by default have a sound input. So Raspbian does not expect one to be present and will not automatically route sound input to Sonic Pi. For the purpose of the project, being able to record the sound of a breastpump via a microphone and modify it in real time is necessary. Therefore, the code below is necessary. But first things first: To run a script on startup on Raspbian stretch you need to modify the following document like this:
 
 ```markdown
 sudo nano .config/lxsession/LXDE-pi/autostart
@@ -19,7 +19,30 @@ Add the following line (if your startup_script.sh is located on the Desktop - el
 ```markdown
 @Desktop/startup_script.sh
 ```
-Upon reboot, the script should run after the LX session starts.
+Upon reboot, the script should run after the LXSession starts and the Desktop is displayed.
+
+The startup script (startup_script.sh) starts jackd and directs all output to /dev/null and disconnects the process with &
+
+```markdown
+jackd -d alsa -dhw:0,0 1>/dev/null 2>/dev/null &
+```
+The startup script then calls qjackctl, a graphical interface to jack. I use it to debug. It allows me to check whether jackd is working correctly. It has a 
+
+```markdown
+qjackctl 1>/dev/null 2>/dev/null &
+```
+this starts Sonic Pi (the graphical interface and everything). I never figured out how to use the server without the graphical interface, so this is how I am doing it. Later in the script when the audio routing is set up, I'll use sonic-pi-cli to control it.
+
+```markdown
+sonic-pi 1>/dev/null 2>/dev/null &
+```
+The following line writes the connection between system_capture_1 and SuperCollider (the software that Sonic Pi runs on) into a variable. Raspberry Pi does not have a microphone on board, so the OS does not automatically route sound recorded by the microphone to Sonic Pi (as is the case on other OSs like Mac OS). 
+It takes a (long) while for Sonic Pi to start. So the script probes repeatedly whether SuperCollider has started and whether SuperCollider:in_1 is available. Else, no sound will reach Sonic Pi. 
+
+```markdown
+STR=$(jack_connect system:capture_1 SuperCollider:in_1 2>&1)
+```
+
 
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
