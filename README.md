@@ -42,7 +42,7 @@ It takes a (looong) while for Sonic Pi to start. So the script probes repeatedly
 ```markdown
 STR=$(jack_connect system:capture_1 SuperCollider:in_1 2>&1)
 ```
-Here is the loop that checks on the availability of SuperCollider:in_1. 
+Here is the loop that checks on the availability of SuperCollider:in_1. The error messages start with either "Cannot" or "Error". If one of those messages is detected, the loop sleeps for two seconds, then tries again. Once the jack_connect is successfully executed, the script goes to the next step. 
 
 ```markdown
 STR=$(jack_connect system:capture_1 SuperCollider:in_1 2>&1)
@@ -57,12 +57,16 @@ STR=$(jack_connect system:capture_1 SuperCollider:in_1 2>&1)
 newstring=$(echo $STR | cut -c1-5)
 done
 ```
+This is the last step where sonic-pi-cli loads  ruby script in midi_script.txt. Although Sonic-Pi can be controlled via Python (my preferred programming language), I did not find the libraries intuitive to use for my purposes, so I am using Ruby here. 
 
+```markdown
+cat ~/Desktop/RaspberryPiVersion/midi_script.txt | sonic_pi
+```
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
 Syntax highlighted code block
-
+```
 # Header 1
 ## Header 2
 ### Header 3
