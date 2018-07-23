@@ -2,6 +2,8 @@
 
 _Women's Work is Never Done_ is an interactive sound object consisting of a standard Medela breastpump and audio hardware. The pump can be used to pump breastmilk. It can also be used to make electronic music using the rhythmic sounds that the breastpump generates. There are three sets of sounds that can be layered while playing the instrument: Two streams of audio from the pump and a third (optional) stream consisting of samples of politicians talking about women, gender, and family. The title comes from the couplet  “Men work from sun to sun but women’s work is never done”.  It describes how women tend to work longer hours than men because of the disproportionate amount of invisible labor women still do. The breastpump is symbolic of this invisible labor. Pumping breastmilk is done by many women (and a few transgender men, cyborgs, nonbinary people, etc.) during work breaks or while doing other work. The pumping typically happens in private since it is not seen as an appropriate activity for public spaces. Like most invisible work, pumping takes a lot of time but is not a type of work that is remunerated. _Women's Work is Never Done_  brings the breastpump out into the public. In this project, the breastpump is not treated as sonic curiosity but rather as a symbol for how products for women could be envisioned and designed differently. 
 
+## Video Documentation
+
 ## Hardware Documentation
 ![Image](http://www.anninaruest.com/img/bag_documentation.jpg)
 ![Image](http://www.anninaruest.com/img/hardware_diagram.jpg)
