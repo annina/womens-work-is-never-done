@@ -105,15 +105,27 @@ end
 ```
 What I have learned about live_audio streams in the context of this project is that if you give every live_audio stream a unique name, they will all overlap and the result will not be interesting. Playing everything at once eradicates differences and interaction with the keyboard. So I have two live_audio streams that are connected to the keys and rotary controllers respectively. Keys cannot play together and sound controlled by rotary controllers cannot be layered on top of each other. But sound made by pressing keys can be layered on top of sound produced when rotary keys are turned.
 
+## License
 
+MIT License
 
-- Bulleted
-- List
+Copyright (c) 2018 Annina Rüst
 
-1. Numbered
-2. List
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-**Bold** and _Italic_ and `Code` text
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-[Link](url) and ![Image](src)
-```
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
